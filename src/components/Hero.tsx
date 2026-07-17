@@ -14,7 +14,7 @@ export default function Hero({ onJoinWaitlist }: HeroProps) {
         duration: 5,
         repeat: Infinity,
         repeatType: "reverse" as const,
-        ease: "easeInOut" as any,
+        ease: "easeInOut" as const,
         delay: delay,
       }
     }
