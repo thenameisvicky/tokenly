@@ -26,10 +26,10 @@ export default function Home() {
             Air-Drop
           </span>
         </div>
-        <nav className="flex items-center gap-6 text-sm text-[#64748B]">
-          <a href="#scenario" className="hover:text-[#0F172A] transition-colors">Scenario</a>
-          <a href="#how-it-works" className="hover:text-[#0F172A] transition-colors">How it works</a>
-          <a href="#cli" className="hover:text-[#0F172A] transition-colors">Terminal CLI</a>
+        <nav className="flex items-center gap-4 sm:gap-6 text-sm text-[#64748B]">
+          <a href="#scenario" className="hidden sm:inline-block hover:text-[#0F172A] transition-colors">Scenario</a>
+          <a href="#how-it-works" className="hidden sm:inline-block hover:text-[#0F172A] transition-colors">How it works</a>
+          <a href="#cli" className="hidden sm:inline-block hover:text-[#0F172A] transition-colors">Terminal CLI</a>
           <a href="#cta" className="px-3 py-1.5 bg-[#0F172A] text-white hover:bg-[#10B981] transition-all text-xs font-semibold rounded">
             Start Air-Dropping
           </a>
@@ -112,6 +112,7 @@ export default function Home() {
             <div className="hidden md:flex md:col-span-1 justify-center items-center">
               <div className="w-[1px] h-full bg-[#E2E8F0]" />
             </div>
+            <div className="block md:hidden my-6 border-t border-[#E2E8F0]" />
 
             {/* The Tokenly Way */}
             <div className="md:col-span-5 flex flex-col justify-between pl-0 md:pl-8 py-2">
@@ -205,7 +206,7 @@ $ claude "refactor the database schema"
 Error: 429 Too Many Requests - Quota exceeded.
 
 # They paste your $10 Tokenly Air-Drop link:
-$ export ANTHROPIC_BASE_URL="https://api.tokenpay.dev/v1/drop/cl_992x"
+$ export ANTHROPIC_BASE_URL="https://api.tokenly.app/v1/drop/cl_992x"
 $ claude "refactor the database schema"
 ⚡ Tokenly: Connected to Ash's Air-Drop Pool ($8.42 / $10.00 remaining)
 > Refactoring schema now...`}</code>
