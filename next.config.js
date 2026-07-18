@@ -4,7 +4,6 @@ const nextConfig = {
   images: {
     unoptimized: true, // Required for GitHub Pages static deployment
   },
-  basePath: '/tokenly',
 };
 
 export default nextConfig;

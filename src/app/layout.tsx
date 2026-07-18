@@ -1,23 +1,24 @@
+/* eslint-disable react-refresh/only-export-components */
 import type { Metadata } from 'next';
 import '../index.css';
 
 export const metadata: Metadata = {
-  title: 'Tokenly | Peer-to-Peer AI Token Proxy & Team Wallet',
-  description: 'Stop exposing raw API keys or sharing credit cards. Allocate, group-split, and route OpenAI, Anthropic, and DeepSeek tokens instantly with a lightweight <5ms proxy gateway.',
-  keywords: ['AI proxy', 'OpenAI gateway', 'LLM cost control', 'AI token wallet', 'team API key management', 'developer tools', 'micro-SaaS'],
+  title: 'Tokenly | Minimal Wallet for Team AI Tokens',
+  description: 'Stop exposing raw API keys or sharing corporate credit cards. Allocate scoped credit budgets, track individual usage, and control your team\'s AI expenses from one clean interface.',
+  keywords: ['AI wallet', 'AI budget control', 'LLM cost tracking', 'team API key security', 'developer credit manager'],
   authors: [{ name: 'Tokenly Team' }],
   metadataBase: new URL('https://thenameisvicky.github.io/tokenly'),
   openGraph: {
-    title: 'Tokenly — The GPay for AI Tokens',
-    description: 'Allocate, split, and route AI tokens across your team instantly via secure, lightweight proxy links.',
+    title: 'Tokenly — Minimal Wallet for Team AI Tokens',
+    description: 'Stop exposing raw API keys or sharing credit cards. Allocate, split, and monitor AI budgets across developers instantly.',
     url: 'https://thenameisvicky.github.io/tokenly',
     siteName: 'Tokenly',
     images: [
       {
-        url: '/tokenly/og-image.png', // Corrected path with basePath for GitHub Pages
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Tokenly Dashboard Preview',
+        alt: 'Tokenly Logo',
       },
     ],
     locale: 'en_US',
@@ -25,9 +26,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tokenly | P2P AI Token Gateway',
-    description: 'Stop bleeding LLM API costs. Route and split AI tokens across developers instantly.',
-    images: ['/tokenly/og-image.png'], // Corrected path with basePath for GitHub Pages
+    title: 'Tokenly | Minimal Wallet for Team AI Tokens',
+    description: 'Stop bleeding LLM costs. Securely allocate and track AI budgets across developers.',
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -39,14 +40,9 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'Tokenly',
-  operatingSystem: 'Any (Web, Node.js, Python, Go API)',
+  operatingSystem: 'Any (Web, API)',
   applicationCategory: 'DeveloperApplication',
-  description: 'A lightweight peer-to-peer proxy gateway for team-based AI token allocation and cost splitting.',
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD',
-  },
+  description: 'A minimal credit allocation wallet for team-based AI token budgeting and expense monitoring.',
 };
 
 export default function RootLayout({
