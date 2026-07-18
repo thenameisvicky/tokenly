@@ -6,7 +6,7 @@ const nextConfig = {
   images: {
     unoptimized: true, // Required for GitHub Pages static deployment
   },
-  basePath: isProd ? '/tokenly' : undefined,
+  ...(isProd ? { basePath: '/tokenly' } : {}),
 };
 
 export default nextConfig;
