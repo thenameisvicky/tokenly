@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { Trophy, GraduationCap, Rocket, Briefcase, Building2, Globe } from 'lucide-react';
 

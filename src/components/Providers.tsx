@@ -1,3 +1,5 @@
+"use client";
+
 import { Fragment } from 'react';
 import { motion } from 'framer-motion';
 import { Cpu } from 'lucide-react';

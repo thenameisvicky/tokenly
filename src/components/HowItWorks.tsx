@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { Wallet, UserPlus, Coins, Cpu } from 'lucide-react';
 

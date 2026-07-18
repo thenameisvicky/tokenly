@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { 
   Wallet, GraduationCap, BarChart3, Send, Cpu, Code2, Settings, BellRing 

@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, ArrowRight, Play, Wallet, Cpu } from 'lucide-react';
 
