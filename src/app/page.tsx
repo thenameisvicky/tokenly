@@ -82,47 +82,124 @@ export default function Home() {
         </section>
 
 
-        {/* SECTION 2: THE 2 AM SCENARIO */}
+        {/* SECTION 2: THE 2 AM SCENARIOS */}
         <section id="scenario" className="py-20 border-b border-[#E2E8F0] scroll-mt-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <span className="text-xs font-semibold uppercase tracking-widest text-[#10B981]">Why We Exist</span>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] mt-2">
               The Bootstrapped Squad Reality.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-11 gap-8 md:gap-0 items-stretch">
-            {/* The Ban-Prone Hack */}
-            <div className="md:col-span-5 flex flex-col justify-between pr-0 md:pr-8 py-2">
-              <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-[#64748B] mb-4">The Ban-Prone Hack</h3>
-                <p className="text-sm text-[#64748B] leading-relaxed mb-6">
-                  Your dev friend runs out of tokens mid-sprint. You share your account login, paste keys across shared environments, and stress out hoping they don't accidentally burn through your entire monthly computational budget.
-                </p>
-              </div>
-              <div className="p-4 bg-[#FFF5F5] border border-[#FEB2B2] rounded font-mono text-xs text-[#C53030]">
-                <span className="block font-bold mb-1">// Exposed Master Credentials</span>
-                <span>risk: account ban | budget: unprotected</span>
+          <div className="space-y-20">
+            {/* Scenario 1: Key Sharing / Ban Risk */}
+            <div className="border-b border-[#E2E8F0]/60 pb-16">
+              <span className="text-xs font-mono text-[#10B981] uppercase block mb-6">Scenario 01 / Key Sharing</span>
+              <div className="grid grid-cols-1 md:grid-cols-11 gap-8 md:gap-0 items-stretch">
+                <div className="md:col-span-5 flex flex-col justify-between pr-0 md:pr-8 py-2">
+                  <div>
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#64748B] mb-4">The Ban-Prone Hack</h3>
+                    <p className="text-sm text-[#64748B] leading-relaxed mb-6">
+                      Your dev friend runs out of tokens mid-sprint. You share your account login, paste keys across shared environments, and stress out hoping they don't accidentally burn through your entire monthly computational budget.
+                    </p>
+                  </div>
+                  <div className="p-4 bg-[#FFF5F5] border border-[#FEB2B2] rounded font-mono text-xs text-[#C53030]">
+                    <span className="block font-bold mb-1">// Exposed Master Credentials</span>
+                    <span>risk: account ban | budget: unprotected</span>
+                  </div>
+                </div>
+
+                <div className="hidden md:flex md:col-span-1 justify-center items-center">
+                  <div className="w-[1px] h-full bg-[#E2E8F0]" />
+                </div>
+                <div className="block md:hidden my-6 border-t border-[#E2E8F0]" />
+
+                <div className="md:col-span-5 flex flex-col justify-between pl-0 md:pl-8 py-2">
+                  <div>
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#10B981] mb-4">The $10 Kill-Switch</h3>
+                    <p className="text-sm text-[#64748B] leading-relaxed mb-6">
+                      Generate scoped token budgets capped at exactly $10. Centralized cost tracking, automated expense limits, and auto-expiry configurations ensure zero key exposure and zero financial runaway risk.
+                    </p>
+                  </div>
+                  <div className="p-4 bg-[#F0FDF4] border border-[#BBF7D0] rounded font-mono text-xs text-[#166534] flex flex-col gap-1">
+                    <span className="block font-bold">// Safe Scoped Allowance</span>
+                    <span>credentials: protected | budget: capped at $10</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Separator Line */}
-            <div className="hidden md:flex md:col-span-1 justify-center items-center">
-              <div className="w-[1px] h-full bg-[#E2E8F0]" />
-            </div>
-            <div className="block md:hidden my-6 border-t border-[#E2E8F0]" />
+            {/* Scenario 2: Infinite Loop Bills */}
+            <div className="border-b border-[#E2E8F0]/60 pb-16">
+              <span className="text-xs font-mono text-[#10B981] uppercase block mb-6">Scenario 02 / Infinite Agent Loops</span>
+              <div className="grid grid-cols-1 md:grid-cols-11 gap-8 md:gap-0 items-stretch">
+                <div className="md:col-span-5 flex flex-col justify-between pr-0 md:pr-8 py-2">
+                  <div>
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#64748B] mb-4">The Runaway Bill</h3>
+                    <p className="text-sm text-[#64748B] leading-relaxed mb-6">
+                      A team member tests a new recursive AI agent loop on a master key. They step away for coffee, only to return to a surprise $300 bill because there was no consumption limit configured.
+                    </p>
+                  </div>
+                  <div className="p-4 bg-[#FFF5F5] border border-[#FEB2B2] rounded font-mono text-xs text-[#C53030]">
+                    <span className="block font-bold mb-1">// Infinite Loop Shock</span>
+                    <span>unbounded api access | cost: $300+ in minutes</span>
+                  </div>
+                </div>
 
-            {/* The Tokenly Way */}
-            <div className="md:col-span-5 flex flex-col justify-between pl-0 md:pl-8 py-2">
-              <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-[#10B981] mb-4">The $10 Kill-Switch</h3>
-                <p className="text-sm text-[#64748B] leading-relaxed mb-6">
-                  Generate scoped token budgets capped at exactly $10. Centralized cost tracking, automated expense limits, and auto-expiry configurations ensure zero key exposure and zero financial runaway risk.
-                </p>
+                <div className="hidden md:flex md:col-span-1 justify-center items-center">
+                  <div className="w-[1px] h-full bg-[#E2E8F0]" />
+                </div>
+                <div className="block md:hidden my-6 border-t border-[#E2E8F0]" />
+
+                <div className="md:col-span-5 flex flex-col justify-between pl-0 md:pl-8 py-2">
+                  <div>
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#10B981] mb-4">Hard-Capped Bounds</h3>
+                    <p className="text-sm text-[#64748B] leading-relaxed mb-6">
+                      Configure a hard spending threshold on the shared credit drop. The exact millisecond the limit is reached, all loop requests are immediately shut off. No surprise charges, no exceptions.
+                    </p>
+                  </div>
+                  <div className="p-4 bg-[#F0FDF4] border border-[#BBF7D0] rounded font-mono text-xs text-[#166534] flex flex-col gap-1">
+                    <span className="block font-bold">// Budget Boundary Guard</span>
+                    <span>cost: auto-stop at $10.00 | loops: safe</span>
+                  </div>
+                </div>
               </div>
-              <div className="p-4 bg-[#F0FDF4] border border-[#BBF7D0] rounded font-mono text-xs text-[#166534] flex flex-col gap-1">
-                <span className="block font-bold">// Safe Scoped Allowance</span>
-                <span>credentials: protected | budget: capped at $10</span>
+            </div>
+
+            {/* Scenario 3: External Contributors */}
+            <div className="pb-4">
+              <span className="text-xs font-mono text-[#10B981] uppercase block mb-6">Scenario 03 / External Contributors</span>
+              <div className="grid grid-cols-1 md:grid-cols-11 gap-8 md:gap-0 items-stretch">
+                <div className="md:col-span-5 flex flex-col justify-between pr-0 md:pr-8 py-2">
+                  <div>
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#64748B] mb-4">The Trust Fall</h3>
+                    <p className="text-sm text-[#64748B] leading-relaxed mb-6">
+                      You hire a freelancer or invite an open-source contributor to build a feature. To unblock them, you paste your raw Claude/OpenAI key in a private message, hoping they don't abuse it or leak it.
+                    </p>
+                  </div>
+                  <div className="p-4 bg-[#FFF5F5] border border-[#FEB2B2] rounded font-mono text-xs text-[#C53030]">
+                    <span className="block font-bold mb-1">// Exposed Key Secrets</span>
+                    <span>status: unencrypted | control: zero revocation</span>
+                  </div>
+                </div>
+
+                <div className="hidden md:flex md:col-span-1 justify-center items-center">
+                  <div className="w-[1px] h-full bg-[#E2E8F0]" />
+                </div>
+                <div className="block md:hidden my-6 border-t border-[#E2E8F0]" />
+
+                <div className="md:col-span-5 flex flex-col justify-between pl-0 md:pl-8 py-2">
+                  <div>
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#10B981] mb-4">Temporary Expiry Drops</h3>
+                    <p className="text-sm text-[#64748B] leading-relaxed mb-6">
+                      Provide a temporary credit allocation that automatically expires in 24 hours. The contributor finishes their tasks, your wallet auto-locks, and your master credentials remain safely encrypted.
+                    </p>
+                  </div>
+                  <div className="p-4 bg-[#F0FDF4] border border-[#BBF7D0] rounded font-mono text-xs text-[#166534] flex flex-col gap-1">
+                    <span className="block font-bold">// Autonomic Lifetime Bounds</span>
+                    <span>lifetime: 24h limit | master keys: invisible</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
