@@ -6,10 +6,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        charcoal: '#18181B',
-        slateDescription: '#71717A',
-        borderGray: '#E4E4E7',
-        accentIndigo: '#4F46E5',
+        charcoal: '#0F172A',
+        slateText: '#64748B',
+        borderGray: '#E2E8F0',
+        softBg: '#F8FAFC',
+        emeraldGreen: '#10B981',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
