@@ -19,13 +19,8 @@ export default function Home() {
       <header className="w-full max-w-5xl px-6 py-6 flex items-center justify-between border-b border-[#E2E8F0]">
         <div className="flex items-center gap-2.5">
           {/* Custom Sleek Wallet Logo */}
-          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4H18C19.1 4 20 4.9 20 6V18C20 19.1 19.1 20 18 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" fill="#0F172A" />
-            <path d="M20 10H16C14.9 10 14 10.9 14 12C14 13.1 14.9 14 16 14H20" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            <circle cx="17.5" cy="12" r="1.5" fill="#10B981" />
-            <path d="M8 8V12M6 8H10" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-          <span className="font-bold tracking-tight text-base text-[#0F172A]">Tokenly</span>
+          <img src="logo.png" alt="Tokenly Logo" className="w-20 h-20 object-contain" />
+          <span className="font-bold tracking-tight text-lg text-[#0F172A]">Tokenly</span>
         </div>
         <nav className="flex items-center gap-4 sm:gap-6 text-sm text-[#64748B]">
           <a href="#story-flow" className="hover:text-[#0F172A] transition-colors">How it unblocks</a>
