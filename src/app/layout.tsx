@@ -2,9 +2,6 @@
 import type { Metadata } from 'next';
 import '../index.css';
 
-const isProd = process.env.NODE_ENV === 'production';
-const prefix = isProd ? '/tokenly' : '';
-
 export const metadata: Metadata = {
   title: 'Tokenly',
   description: 'Stop sharing raw master keys or risking account bans. Allocate secure, hard-capped compute budgets to your teammates profiles instantly.',
@@ -12,9 +9,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'Tokenly Team' }],
   metadataBase: new URL('https://thenameisvicky.github.io/tokenly'),
   icons: {
-    icon: `${prefix}/favicon.png?v=4`,
-    shortcut: `${prefix}/favicon.png?v=4`,
-    apple: `${prefix}/logo.png?v=4`,
+    icon: 'favicon.png?v=5',
+    shortcut: 'favicon.png?v=5',
+    apple: 'logo.png?v=5',
   },
   openGraph: {
     title: 'Tokenly',
