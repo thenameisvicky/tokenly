@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'Tokenly Team' }],
   metadataBase: new URL('https://thenameisvicky.github.io/tokenly'),
   icons: {
-    icon: '/favicon.png?v=3',
-    shortcut: '/favicon.png?v=3',
-    apple: '/logo.png?v=3',
+    icon: '/favicon.png?v=4',
+    shortcut: '/favicon.png?v=4',
+    apple: '/logo.png?v=4',
   },
   openGraph: {
     title: 'Tokenly',
