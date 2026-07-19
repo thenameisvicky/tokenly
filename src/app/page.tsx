@@ -35,9 +35,9 @@ export default function Home() {
       <main className="w-full max-w-5xl px-6 flex-grow">
         
         {/* SECTION 1: HERO */}
-        <section className="py-20 md:py-28 flex flex-col items-center text-center border-b border-[#E2E8F0]">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0F172A] max-w-3xl leading-[1.1] mb-8">
-            Teammate rate-limited? Air-drop $10 of AI tokens instantly.
+        <section className="py-40 md:py-38 flex flex-col items-center text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#0F172A] max-w-6xl leading-[1.1] mb-8">
+            Teammate rate-limited? Air-drop $10 of AI tokens instantly
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-[#64748B] max-w-2xl leading-relaxed mb-12">
             Stop sharing raw master keys, paying for idle enterprise seats, or risking account bans. Instantly allocate safe, hard-capped token allowances to teammates so your squad can keep shipping without interruption.
@@ -71,16 +71,10 @@ export default function Home() {
               </div>
             )}
           </div>
-
-          <div className="text-xs text-[#64748B] flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <span>Built for lean squads, indie hackers, and hackathon teams.</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E2E8F0]" />
-            <span>100% compliant with leading coding agents and CLIs.</span>
-          </div>
         </section>
 
         {/* SECTION 2: STORY DOODLE FLOW */}
-        <section id="story-flow" className="py-20 border-b border-[#E2E8F0] scroll-mt-6">
+        <section id="story-flow" className="py-20 scroll-mt-6">
           <div className="text-center mb-16">
             <span className="text-xs font-semibold uppercase tracking-widest text-[#10B981]">Developer Flexibility</span>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] mt-2">
@@ -174,7 +168,7 @@ export default function Home() {
         </section>
 
         {/* SECTION 3: USE CASES */}
-        <section id="use-cases" className="py-20 border-b border-[#E2E8F0] scroll-mt-6">
+        <section id="use-cases" className="py-20 scroll-mt-6">
           <div className="text-center mb-16">
             <span className="text-xs font-semibold uppercase tracking-widest text-[#10B981]">Utility Matrix</span>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] mt-2">
@@ -282,18 +276,6 @@ export default function Home() {
           <div className="space-y-1">
             <span className="font-bold text-[#0F172A] block">Tokenly</span>
             <span className="text-[#64748B]">Created by <a href="https://github.com/thenameisvicky" className="font-medium text-[#0F172A] hover:underline">thenameisvicky</a>.</span>
-          </div>
-          <div className="flex flex-wrap items-center gap-6">
-            <a href="https://github.com/thenameisvicky/tokenly" className="font-medium text-[#0F172A] hover:underline flex items-center gap-1">
-              <span>Open Source on GitHub</span>
-              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-              </svg>
-            </a>
-            <div className="flex items-center gap-1.5 text-[#10B981]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
-              <span>100% Uptime Status</span>
-            </div>
           </div>
         </div>
         
