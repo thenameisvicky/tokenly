@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#FFFFFF] text-[#0F172A] selection:bg-[#10B981] selection:text-white antialiased font-sans flex flex-col items-center">
       {/* Navigation Header */}
-      <header className="w-full max-w-5xl px-6 py-6 flex items-center justify-between border-b border-[#E2E8F0]">
+      <header className="w-full max-w-5xl px-6 py-6 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           {/* Custom Sleek Wallet Logo */}
           <img src="logo.png" alt="Tokenly Logo" className="w-10 h-10 object-contain" />
@@ -271,7 +271,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full max-w-5xl px-6 py-12 text-xs text-[#64748B] border-t border-[#E2E8F0] mt-16 flex flex-col gap-6">
+      <footer className="w-full max-w-5xl px-6 py-12 text-xs text-[#64748B] mt-16 flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <span className="font-bold text-[#0F172A] block">Tokenly</span>
@@ -279,7 +279,7 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="pt-6 border-t border-[#E2E8F0]/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-[#94A3B8]">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[#94A3B8]">
           <span>&copy; {new Date().getFullYear()} Tokenly. Released under the MIT License.</span>
           <div className="flex items-center gap-4 text-[10px] font-mono">
             <span>html/js footprint: ~3.1KB</span>
