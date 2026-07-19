@@ -1,60 +1,10 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Home() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
-
-  // Interactive Simulator States
-  const [selectedLimit, setSelectedLimit] = useState(10);
-  const [remainingBalance, setRemainingBalance] = useState(10);
-  const [isHovered, setIsHovered] = useState(false);
-  const [requestLog, setRequestLog] = useState<string[]>([]);
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isHovered && remainingBalance > 0.05) {
-      interval = setInterval(() => {
-        setRemainingBalance((prev) => {
-          const next = Math.max(0, prev - 0.28);
-          
-          // Generate simulated terminal log
-          if (next > 0) {
-            const cost = 0.28;
-            setRequestLog((logs) => [
-              `[CLI] Tokenly routed request - Cost: $${cost.toFixed(2)} (Remaining: $${next.toFixed(2)})`,
-              ...logs.slice(0, 2)
-            ]);
-          } else {
-            setRequestLog((logs) => [
-              `[Kill-Switch] Limit reached. Target access instantly revoked.`,
-              ...logs.slice(0, 2)
-            ]);
-          }
-          return next;
-        });
-      }, 350);
-    } else if (!isHovered) {
-      // Slow recovery when idle to simulate reset/ready state
-      interval = setInterval(() => {
-        setRemainingBalance((prev) => {
-          if (prev < selectedLimit) {
-            return Math.min(selectedLimit, prev + 0.5);
-          }
-          return prev;
-        });
-        setRequestLog([]);
-      }, 500);
-    }
-    return () => clearInterval(interval);
-  }, [isHovered, remainingBalance, selectedLimit]);
-
-  const handleLimitChange = (limit: number) => {
-    setSelectedLimit(limit);
-    setRemainingBalance(limit);
-    setRequestLog([]);
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,6 +28,7 @@ export default function Home() {
           <span className="font-bold tracking-tight text-base text-[#0F172A]">Tokenly</span>
         </div>
         <nav className="flex items-center gap-4 sm:gap-6 text-sm text-[#64748B]">
+          <a href="#story-flow" className="hover:text-[#0F172A] transition-colors">How it unblocks</a>
           <a href="#use-cases" className="hover:text-[#0F172A] transition-colors">Use cases</a>
           <a href="#cta" className="px-3 py-1.5 bg-[#0F172A] text-white hover:bg-[#10B981] transition-all text-xs font-semibold rounded">
             Join Waitlist
@@ -89,83 +40,16 @@ export default function Home() {
       <main className="w-full max-w-5xl px-6 flex-grow">
         
         {/* SECTION 1: HERO */}
-        <section className="py-20 md:py-32 flex flex-col items-center text-center border-b border-[#E2E8F0]">
+        <section className="py-20 md:py-28 flex flex-col items-center text-center border-b border-[#E2E8F0]">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0F172A] max-w-3xl leading-[1.1] mb-8">
-            Teammate hit a rate limit? Air-drop safe AI access instantly.
+            Teammate rate-limited? Air-drop $10 of AI tokens instantly.
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-[#64748B] max-w-2xl leading-relaxed mb-12">
-            Stop sharing raw production keys or pasting credentials in team chats. Instantly allocate restricted, auto-expiring credit limits so your partner can keep coding without draining your master account.
+            Stop sharing raw master keys, paying for idle enterprise seats, or getting banned for multi-IP account sharing. Tunnel developer compute through an anti-ban egress link with real-time hardware budget caps.
           </p>
 
-          {/* INTERACTIVE HERO SIMULATOR */}
-          <div className="w-full max-w-lg border border-[#E2E8F0] rounded p-6 bg-[#F8FAFC] text-left mb-12 shadow-sm">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#64748B]">Live Sandbox Preview</span>
-              <div className="flex items-center gap-1.5">
-                <span className={`w-2 h-2 rounded-full ${isHovered ? 'bg-[#10B981] animate-ping' : 'bg-[#10B981]'}`} />
-                <span className="text-[10px] font-mono text-[#64748B]">
-                  {isHovered ? 'simulating request stream...' : 'idle (hover to simulate drain)'}
-                </span>
-              </div>
-            </div>
-
-            {/* Selector caps */}
-            <div className="flex gap-2 mb-6">
-              {[5, 10, 25, 50].map((val) => (
-                <button
-                  key={val}
-                  onClick={() => handleLimitChange(val)}
-                  className={`px-3 py-1.5 rounded font-mono text-xs font-semibold border transition-all ${
-                    selectedLimit === val
-                      ? 'bg-[#0F172A] text-white border-[#0F172A]'
-                      : 'bg-white text-[#64748B] border-[#E2E8F0] hover:border-[#64748B]'
-                  }`}
-                >
-                  ${val}.00 cap
-                </button>
-              ))}
-            </div>
-
-            {/* Interactive container */}
-            <div
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-              className="p-5 bg-white border border-[#E2E8F0] rounded cursor-pointer transition-all hover:border-[#10B981] select-none"
-            >
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-xs font-bold text-[#0F172A]">Allowance Allowance</span>
-                <span className="font-mono text-sm font-semibold text-[#10B981]">
-                  ${remainingBalance.toFixed(2)} / ${selectedLimit.toFixed(2)}
-                </span>
-              </div>
-
-              {/* Progress gauge */}
-              <div className="w-full h-2 bg-[#F1F5F9] rounded overflow-hidden">
-                <div
-                  className="h-full bg-[#10B981] transition-all duration-300 ease-out"
-                  style={{ width: `${(remainingBalance / selectedLimit) * 100}%` }}
-                />
-              </div>
-
-              {/* Dynamic live simulation output */}
-              <div className="mt-4 pt-3 border-t border-[#F1F5F9] min-h-[50px] font-mono text-[10px] text-[#64748B] space-y-1">
-                {requestLog.length > 0 ? (
-                  requestLog.map((log, idx) => (
-                    <div key={idx} className={idx === 0 ? 'text-[#0F172A] font-medium' : 'opacity-60'}>
-                      {log}
-                    </div>
-                  ))
-                ) : (
-                  <div className="text-center py-2 italic text-[#94A3B8]">
-                    Hover over this box to simulate active CLI requests draining the drop pool.
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-
           {/* Waitlist CTA Block */}
-          <div className="w-full max-w-md" id="cta">
+          <div className="w-full max-w-md mb-8" id="cta">
             {!submitted ? (
               <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
                 <input
@@ -193,134 +77,205 @@ export default function Home() {
             )}
           </div>
 
-          <div className="mt-8 text-xs text-[#64748B] flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <div className="text-xs text-[#64748B] flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <span>Built for lean squads, indie hackers, and hackathon teams.</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#E2E8F0]" />
-            <span>Compatible with leading developer environments and CLIs.</span>
+            <span>100% compliant with leading coding agents and CLIs.</span>
           </div>
         </section>
 
-
-        {/* SECTION 2: USE CASES */}
-        <section id="use-cases" className="py-20 border-b border-[#E2E8F0] scroll-mt-6">
-          <div className="text-center mb-20">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#10B981]">Use Cases</span>
+        {/* SECTION 2: STORY DOODLE FLOW */}
+        <section id="story-flow" className="py-20 border-b border-[#E2E8F0] scroll-mt-6">
+          <div className="text-center mb-16">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#10B981]">Developer Flexibility</span>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] mt-2">
-              The Bootstrapped Squad Reality.
+              From Limit-Hit to Shipping in 30 Seconds.
             </h2>
+            <p className="text-sm text-[#64748B] mt-4 max-w-lg mx-auto">
+              Focus entirely on building features, not battling billing limits or API credentials.
+            </p>
           </div>
 
-          <div className="space-y-20">
-            {/* Scenario 1: Key Sharing / Ban Risk */}
-            <div className="border-b border-[#E2E8F0]/60 pb-16">
-              <span className="text-xs font-mono text-[#10B981] uppercase block mb-6">Case 01 / Key Sharing</span>
-              <div className="grid grid-cols-1 md:grid-cols-11 gap-8 md:gap-0 items-stretch">
-                <div className="md:col-span-5 flex flex-col justify-between pr-0 md:pr-8 py-2">
-                  <div>
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#64748B] mb-4">The Ban-Prone Hack</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed mb-6">
-                      Your dev friend runs out of tokens mid-sprint. You share your account login, paste keys across shared environments, and stress out hoping they don't accidentally burn through your entire monthly computational budget.
-                    </p>
-                  </div>
-                  <div className="p-4 bg-[#FFF5F5] border border-[#FEB2B2] rounded font-mono text-xs text-[#C53030]">
-                    <span className="block font-bold mb-1">// Exposed Master Credentials</span>
-                    <span>risk: account ban | budget: unprotected</span>
-                  </div>
-                </div>
+          <div className="relative max-w-3xl mx-auto">
+            {/* Vertical Timeline Center Line */}
+            <div className="absolute left-[18px] md:left-1/2 top-2 bottom-2 w-[1px] bg-[#E2E8F0] -translate-x-1/2 pointer-events-none" aria-hidden="true" />
 
-                <div className="hidden md:flex md:col-span-1 justify-center items-center">
-                  <div className="w-[1px] h-full bg-[#E2E8F0]" />
+            <div className="space-y-12 md:space-y-0 md:relative md:h-[580px]">
+              
+              {/* Step 1: Midnight Rate Limit */}
+              <div className="relative w-full md:absolute md:top-0 md:left-0 md:h-[120px]">
+                {/* Number Bubble on center line */}
+                <div className="absolute left-[18px] md:left-1/2 top-4 -translate-x-1/2 w-8 h-8 rounded-full bg-[#FFF5F5] border border-[#FEB2B2] flex items-center justify-center font-mono text-xs font-bold text-[#C53030] z-10 shadow-sm">
+                  01
                 </div>
-                <div className="block md:hidden my-6 border-t border-[#E2E8F0]" />
-
-                <div className="md:col-span-5 flex flex-col justify-between pl-0 md:pl-8 py-2">
-                  <div>
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#10B981] mb-4">The $10 Kill-Switch</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed mb-6">
-                      Generate scoped token budgets capped at exactly $10. Centralized cost tracking, automated expense limits, and auto-expiry configurations ensure zero key exposure and zero financial runaway risk.
+                {/* Left Card */}
+                <div className="pl-12 md:pl-0 md:absolute md:left-0 md:w-[44%]">
+                  <div className="p-5 border border-[#E2E8F0] rounded bg-white hover:border-[#FEB2B2] transition-colors shadow-sm">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#C53030]">2:00 AM Rate Limit</span>
+                    <h4 className="font-bold text-sm text-[#0F172A] mt-1 mb-2">Exhausted mid-sprint</h4>
+                    <p className="text-xs text-[#64748B] leading-relaxed">
+                      Your dev teammate is refining a database schema. Suddenly, the CLI agent hits a quota barrier: <code className="bg-[#FFF5F5] px-1 py-0.5 rounded text-[10px] font-mono text-[#C53030]">429 Too Many Requests</code>. Progress halts completely.
                     </p>
-                  </div>
-                  <div className="p-4 bg-[#F0FDF4] border border-[#BBF7D0] rounded font-mono text-xs text-[#166534] flex flex-col gap-1">
-                    <span className="block font-bold">// Safe Scoped Allowance</span>
-                    <span>credentials: protected | budget: capped at $10</span>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Scenario 2: Infinite Loop Bills */}
-            <div className="border-b border-[#E2E8F0]/60 pb-16">
-              <span className="text-xs font-mono text-[#10B981] uppercase block mb-6">Case 02 / Infinite Agent Loops</span>
-              <div className="grid grid-cols-1 md:grid-cols-11 gap-8 md:gap-0 items-stretch">
-                <div className="md:col-span-5 flex flex-col justify-between pr-0 md:pr-8 py-2">
-                  <div>
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#64748B] mb-4">The Runaway Bill</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed mb-6">
-                      A team member tests a new recursive AI agent loop on a master key. They step away for coffee, only to return to a surprise $300 bill because there was no consumption limit configured.
-                    </p>
-                  </div>
-                  <div className="p-4 bg-[#FFF5F5] border border-[#FEB2B2] rounded font-mono text-xs text-[#C53030]">
-                    <span className="block font-bold mb-1">// Infinite Loop Shock</span>
-                    <span>unbounded api access | cost: $300+ in minutes</span>
-                  </div>
+              {/* Step 2: The Request */}
+              <div className="relative w-full md:absolute md:top-[145px] md:left-0 md:h-[120px]">
+                {/* Number Bubble on center line */}
+                <div className="absolute left-[18px] md:left-1/2 top-4 -translate-x-1/2 w-8 h-8 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-center font-mono text-xs font-bold text-[#0F172A] z-10 shadow-sm">
+                  02
                 </div>
-
-                <div className="hidden md:flex md:col-span-1 justify-center items-center">
-                  <div className="w-[1px] h-full bg-[#E2E8F0]" />
-                </div>
-                <div className="block md:hidden my-6 border-t border-[#E2E8F0]" />
-
-                <div className="md:col-span-5 flex flex-col justify-between pl-0 md:pl-8 py-2">
-                  <div>
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#10B981] mb-4">Hard-Capped Bounds</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed mb-6">
-                      Configure a hard spending threshold on the shared credit drop. The exact millisecond the limit is reached, all loop requests are immediately shut off. No surprise charges, no exceptions.
+                {/* Right Card */}
+                <div className="pl-12 md:pl-0 md:absolute md:right-0 md:w-[44%]">
+                  <div className="p-5 border border-[#E2E8F0] rounded bg-white hover:border-[#94A3B8] transition-colors shadow-sm">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#64748B]">Immediate Help Ping</span>
+                    <h4 className="font-bold text-sm text-[#0F172A] mt-1 mb-2">Request to CLI owner</h4>
+                    <p className="text-xs text-[#64748B] leading-relaxed">
+                      No corporate credit card runs, no workspace invites. Teammate pings the account owner: <em>"Hey, out of tokens, add me to your Tokenly squad for a quick drop."</em>
                     </p>
-                  </div>
-                  <div className="p-4 bg-[#F0FDF4] border border-[#BBF7D0] rounded font-mono text-xs text-[#166534] flex flex-col gap-1">
-                    <span className="block font-bold">// Budget Boundary Guard</span>
-                    <span>cost: auto-stop at $10.00 | loops: safe</span>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Scenario 3: External Contributors */}
-            <div className="pb-4">
-              <span className="text-xs font-mono text-[#10B981] uppercase block mb-6">Case 03 / External Contributors</span>
-              <div className="grid grid-cols-1 md:grid-cols-11 gap-8 md:gap-0 items-stretch">
-                <div className="md:col-span-5 flex flex-col justify-between pr-0 md:pr-8 py-2">
-                  <div>
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#64748B] mb-4">The Trust Fall</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed mb-6">
-                      You hire a freelancer or invite an open-source contributor to build a feature. To unblock them, you paste your raw Claude/OpenAI key in a private message, hoping they don't abuse it or leak it.
-                    </p>
-                  </div>
-                  <div className="p-4 bg-[#FFF5F5] border border-[#FEB2B2] rounded font-mono text-xs text-[#C53030]">
-                    <span className="block font-bold mb-1">// Exposed Key Secrets</span>
-                    <span>status: unencrypted | control: zero revocation</span>
-                  </div>
+              {/* Step 3: The Air-Drop */}
+              <div className="relative w-full md:absolute md:top-[290px] md:left-0 md:h-[120px]">
+                {/* Number Bubble on center line */}
+                <div className="absolute left-[18px] md:left-1/2 top-4 -translate-x-1/2 w-8 h-8 rounded-full bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center font-mono text-xs font-bold text-[#166534] z-10 shadow-sm">
+                  03
                 </div>
-
-                <div className="hidden md:flex md:col-span-1 justify-center items-center">
-                  <div className="w-[1px] h-full bg-[#E2E8F0]" />
-                </div>
-                <div className="block md:hidden my-6 border-t border-[#E2E8F0]" />
-
-                <div className="md:col-span-5 flex flex-col justify-between pl-0 md:pl-8 py-2">
-                  <div>
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#10B981] mb-4">Temporary Expiry Drops</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed mb-6">
-                      Provide a temporary credit allocation that automatically expires in 24 hours. The contributor finishes their tasks, your wallet auto-locks, and your master credentials remain safely encrypted.
+                {/* Left Card */}
+                <div className="pl-12 md:pl-0 md:absolute md:left-0 md:w-[44%]">
+                  <div className="p-5 border border-[#E2E8F0] rounded bg-white hover:border-[#BBF7D0] transition-colors shadow-sm">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#10B981]">Safe Scoped Budget</span>
+                    <h4 className="font-bold text-sm text-[#0F172A] mt-1 mb-2">Owner shares a $10 drop</h4>
+                    <p className="text-xs text-[#64748B] leading-relaxed">
+                      The owner logs in, registers the teammate's GitHub email, and allocates a $10.00 quota limit to their profile in 3 seconds. No credentials or keys are exposed.
                     </p>
-                  </div>
-                  <div className="p-4 bg-[#F0FDF4] border border-[#BBF7D0] rounded font-mono text-xs text-[#166534] flex flex-col gap-1">
-                    <span className="block font-bold">// Autonomic Lifetime Bounds</span>
-                    <span>lifetime: 24h limit | master keys: invisible</span>
                   </div>
                 </div>
               </div>
+
+              {/* Step 4: Back to Shipping */}
+              <div className="relative w-full md:absolute md:top-[435px] md:left-0 md:h-[120px]">
+                {/* Number Bubble on center line */}
+                <div className="absolute left-[18px] md:left-1/2 top-4 -translate-x-1/2 w-8 h-8 rounded-full bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center font-mono text-xs font-bold text-[#10B981] z-10 shadow-sm">
+                  04
+                </div>
+                {/* Right Card */}
+                <div className="pl-12 md:pl-0 md:absolute md:right-0 md:w-[44%]">
+                  <div className="p-5 border border-[#E2E8F0] rounded bg-white hover:border-[#10B981] transition-colors shadow-sm">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#10B981]">Zero Friction</span>
+                    <h4 className="font-bold text-sm text-[#0F172A] mt-1 mb-2">Utilizing the $10 drop</h4>
+                    <p className="text-xs text-[#64748B] leading-relaxed">
+                      Teammate continues running their local CLI as usual. The allocation is resolved automatically on the backend. Developers focus on building, not credential plumbing.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
             </div>
+          </div>
+        </section>
+
+        {/* SECTION 3: USE CASES */}
+        <section id="use-cases" className="py-20 border-b border-[#E2E8F0] scroll-mt-6">
+          <div className="text-center mb-16">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#10B981]">Utility Matrix</span>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] mt-2">
+              Where Tokenly Keeps You Shipping.
+            </h2>
+            <p className="text-sm text-[#64748B] mt-3">
+              Purpose-built peer-to-peer allocation for bootstrapped teams and developer sprints.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            {/* Use Case 1: P2P Quota Air-Drop */}
+            <div className="p-6 border border-[#E2E8F0] rounded bg-white hover:shadow-sm transition-all flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-mono text-[#10B981] block mb-2">01 / Peer-to-Peer</span>
+                <h3 className="font-bold text-sm text-[#0F172A] mb-3">Temporary Quota Sharing</h3>
+                <p className="text-xs text-[#64748B] leading-relaxed">
+                  Donate small compute margins ($5 or $10) to a teammate without adding them to corporate workspaces or giving away master credentials.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-[#F1F5F9] text-[10px] font-mono text-[#166534]">
+                // Active ledger termination
+              </div>
+            </div>
+
+            {/* Use Case 2: Multi-IP Anti-Ban Guard */}
+            <div className="p-6 border border-[#E2E8F0] rounded bg-white hover:shadow-sm transition-all flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-mono text-[#10B981] block mb-2">02 / Compliance</span>
+                <h3 className="font-bold text-sm text-[#0F172A] mb-3">Anti-Ban Egress Guard</h3>
+                <p className="text-xs text-[#64748B] leading-relaxed">
+                  Avoid automated account bans from AI providers checking multi-IP concurrency. All teammate requests are funneled through a single static egress tunnel with desktop uTLS fingerprinting.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-[#F1F5F9] text-[10px] font-mono text-[#166534]">
+                // Static IP egress & uTLS spoofing
+              </div>
+            </div>
+
+            {/* Use Case 3: Recursive Loop Breaker */}
+            <div className="p-6 border border-[#E2E8F0] rounded bg-white hover:shadow-sm transition-all flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-mono text-[#10B981] block mb-2">03 / Protection</span>
+                <h3 className="font-bold text-sm text-[#0F172A] mb-3">Recursive Agent Loop-Breaker</h3>
+                <p className="text-xs text-[#64748B] leading-relaxed">
+                  Never suffer from a surprise $300 bill when an AI agent gets stuck in a recursive loop. The real-time kill-switch severs the link the exact millisecond the limit is reached.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-[#F1F5F9] text-[10px] font-mono text-[#C53030]">
+                // Hard 402 Payment Required block
+              </div>
+            </div>
+
+            {/* Use Case 4: Sovereign Token Pools */}
+            <div className="p-6 border border-[#E2E8F0] rounded bg-white hover:shadow-sm transition-all flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-mono text-[#10B981] block mb-2">04 / Flexibility</span>
+                <h3 className="font-bold text-sm text-[#0F172A] mb-3">Wholesale Token Pools</h3>
+                <p className="text-xs text-[#64748B] leading-relaxed">
+                  Buy pooled wholesale credits directly on Tokenly. Let teammates draw from a single shared credit account without needing to copy-paste or manage individual provider master keys.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-[#F1F5F9] text-[10px] font-mono text-[#166534]">
+                // No master API key required
+              </div>
+            </div>
+
+            {/* Use Case 5: High-Signal Telemetry */}
+            <div className="p-6 border border-[#E2E8F0] rounded bg-white hover:shadow-sm transition-all flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-mono text-[#10B981] block mb-2">05 / Monitoring</span>
+                <h3 className="font-bold text-sm text-[#0F172A] mb-3">Real-time Telemetry</h3>
+                <p className="text-xs text-[#64748B] leading-relaxed">
+                  Monitor latencies, active token burn rates, and specific team allocations through a clean light-mode dashboard designed for developers instead of heavy enterprise DevOps.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-[#F1F5F9] text-[10px] font-mono text-[#166534]">
+                // Low-latency Go ledger tracking
+              </div>
+            </div>
+
+            {/* Use Case 6: Hackathon & Student Teams */}
+            <div className="p-6 border border-[#E2E8F0] rounded bg-white hover:shadow-sm transition-all flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-mono text-[#10B981] block mb-2">06 / Cost Pooling</span>
+                <h3 className="font-bold text-sm text-[#0F172A] mb-3">Hackathons & Projects</h3>
+                <p className="text-xs text-[#64748B] leading-relaxed">
+                  Instantly pool resources during high-velocity development sprints, allocating micro-budgets to collaborators without configuring complex enterprise permission systems.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-[#F1F5F9] text-[10px] font-mono text-[#166534]">
+                // Capped allocations for student teams
+              </div>
+            </div>
+
           </div>
         </section>
 
