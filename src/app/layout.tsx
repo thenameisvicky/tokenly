@@ -3,18 +3,18 @@ import type { Metadata } from 'next';
 import '../index.css';
 
 export const metadata: Metadata = {
-  title: 'Tokenly | The Emergency AI Token Air-Drop for Bootstrapped Devs',
+  title: 'Tokenly',
   description: 'Stop sharing raw master keys or risking account bans. Allocate secure, hard-capped compute budgets to your teammates profiles instantly.',
   keywords: ['AI tokens', 'air-drop', 'cost control', 'CLI rate limit', 'team token manager', 'developer tool'],
   authors: [{ name: 'Tokenly Team' }],
   metadataBase: new URL('https://thenameisvicky.github.io/tokenly'),
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/logo.png',
+    icon: '/favicon.ico?v=2',
+    shortcut: '/favicon.ico?v=2',
+    apple: '/logo.png?v=2',
   },
   openGraph: {
-    title: 'Tokenly | The Emergency AI Token Air-Drop',
+    title: 'Tokenly',
     description: 'Stop sharing raw keys or risking account bans. Allocate secure, hard-capped compute budgets to your teammates profiles.',
     url: 'https://thenameisvicky.github.io/tokenly',
     siteName: 'Tokenly',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tokenly | The Emergency AI Token Air-Drop',
+    title: 'Tokenly',
     description: 'Allocate secure, hard-capped compute budgets to your teammates profiles instantly.',
     images: ['/logo.png'],
   },

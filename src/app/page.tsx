@@ -19,7 +19,7 @@ export default function Home() {
       <header className="w-full max-w-5xl px-6 py-6 flex items-center justify-between border-b border-[#E2E8F0]">
         <div className="flex items-center gap-2.5">
           {/* Custom Sleek Wallet Logo */}
-          <img src="logo.png" alt="Tokenly Logo" className="w-20 h-20 object-contain" />
+          <img src="logo.png" alt="Tokenly Logo" className="w-10 h-10 object-contain" />
           <span className="font-bold tracking-tight text-lg text-[#0F172A]">Tokenly</span>
         </div>
         <nav className="flex items-center gap-4 sm:gap-6 text-sm text-[#64748B]">
@@ -40,7 +40,7 @@ export default function Home() {
             Teammate rate-limited? Air-drop $10 of AI tokens instantly.
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-[#64748B] max-w-2xl leading-relaxed mb-12">
-            Stop sharing raw master keys, paying for idle enterprise seats, or getting banned for multi-IP account sharing. Tunnel developer compute through an anti-ban egress link with real-time hardware budget caps.
+            Stop sharing raw master keys, paying for idle enterprise seats, or risking account bans. Instantly allocate safe, hard-capped token allowances to teammates so your squad can keep shipping without interruption.
           </p>
 
           {/* Waitlist CTA Block */}
@@ -201,17 +201,17 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Use Case 2: Multi-IP Anti-Ban Guard */}
+            {/* Use Case 2: Squad Cost Containment */}
             <div className="p-6 border border-[#E2E8F0] rounded bg-white hover:shadow-sm transition-all flex flex-col justify-between">
               <div>
-                <span className="text-xs font-mono text-[#10B981] block mb-2">02 / Compliance</span>
-                <h3 className="font-bold text-sm text-[#0F172A] mb-3">Anti-Ban Egress Guard</h3>
+                <span className="text-xs font-mono text-[#10B981] block mb-2">02 / Billing</span>
+                <h3 className="font-bold text-sm text-[#0F172A] mb-3">Squad Cost Containment</h3>
                 <p className="text-xs text-[#64748B] leading-relaxed">
-                  Avoid automated account bans from AI providers checking multi-IP concurrency. All teammate requests are funneled through a single static egress tunnel with desktop uTLS fingerprinting.
+                  Consolidate individual billing overheads. Avoid paying for idle seats or managing multiple invoices across your squad. Allocate quotas to active builders dynamically.
                 </p>
               </div>
               <div className="mt-4 pt-3 border-t border-[#F1F5F9] text-[10px] font-mono text-[#166534]">
-                // Static IP egress & uTLS spoofing
+                // Consolidated billing overhead
               </div>
             </div>
 
@@ -221,11 +221,11 @@ export default function Home() {
                 <span className="text-xs font-mono text-[#10B981] block mb-2">03 / Protection</span>
                 <h3 className="font-bold text-sm text-[#0F172A] mb-3">Recursive Agent Loop-Breaker</h3>
                 <p className="text-xs text-[#64748B] leading-relaxed">
-                  Never suffer from a surprise $300 bill when an AI agent gets stuck in a recursive loop. The real-time kill-switch severs the link the exact millisecond the limit is reached.
+                  Never suffer from a surprise $300 bill when an AI agent gets stuck in a recursive loop. The real-time kill-switch automatically terminates access the exact millisecond the quota is exhausted.
                 </p>
               </div>
               <div className="mt-4 pt-3 border-t border-[#F1F5F9] text-[10px] font-mono text-[#C53030]">
-                // Hard 402 Payment Required block
+                // Real-time threshold shutdown
               </div>
             </div>
 
@@ -249,11 +249,11 @@ export default function Home() {
                 <span className="text-xs font-mono text-[#10B981] block mb-2">05 / Monitoring</span>
                 <h3 className="font-bold text-sm text-[#0F172A] mb-3">Real-time Telemetry</h3>
                 <p className="text-xs text-[#64748B] leading-relaxed">
-                  Monitor latencies, active token burn rates, and specific team allocations through a clean light-mode dashboard designed for developers instead of heavy enterprise DevOps.
+                  Monitor active token burn rates and specific team allocations through a clean light-mode dashboard designed for developers instead of heavy enterprise DevOps.
                 </p>
               </div>
               <div className="mt-4 pt-3 border-t border-[#F1F5F9] text-[10px] font-mono text-[#166534]">
-                // Low-latency Go ledger tracking
+                // Real-time quota database
               </div>
             </div>
 
