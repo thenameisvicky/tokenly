@@ -24,6 +24,7 @@ export default function Home() {
         </div>
         <nav className="flex items-center gap-4 sm:gap-6 text-sm text-[#64748B]">
           <a href="#story-flow" className="hover:text-[#0F172A] transition-colors">How it unblocks</a>
+          <a href="#security" className="hover:text-[#0F172A] transition-colors">Security</a>
           <a href="#use-cases" className="hover:text-[#0F172A] transition-colors">Use cases</a>
           <a href="#cta" className="px-3 py-1.5 bg-[#0F172A] text-white hover:bg-[#10B981] transition-all text-xs font-semibold rounded">
             Join Waitlist
@@ -36,11 +37,15 @@ export default function Home() {
         
         {/* SECTION 1: HERO */}
         <section className="py-40 md:py-38 flex flex-col items-center text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-[#F1F5F9] text-xs font-semibold tracking-wide text-[#0F172A] mb-8 border border-[#E2E8F0]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+            Secure AI Agent Infrastructure Platform
+          </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#0F172A] max-w-6xl leading-[1.1] mb-8">
             Teammate rate-limited? Air-drop $10 of AI tokens instantly
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-[#64748B] max-w-2xl leading-relaxed mb-12">
-            Stop sharing raw master keys, paying for idle enterprise seats, or risking account bans. Instantly allocate safe, hard-capped token allowances to teammates so your squad can keep shipping without interruption.
+            An AI Agent Identity & Access Gateway built for secure developer collaboration. Stop sharing raw master keys, paying for idle enterprise seats, or risking account bans. Instantly allocate safe, hard-capped token allowances to teammates so your squad can keep shipping without exposing provider API credentials.
           </p>
 
           {/* Waitlist CTA Block */}
@@ -163,6 +168,98 @@ export default function Home() {
                 </div>
               </div>
 
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION: SECURITY ARCHITECTURE */}
+        <section id="security" className="py-20 scroll-mt-6">
+          <div className="text-center mb-16">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#10B981]">Security Architecture</span>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] mt-2">
+              Engineered for Key Secrecy.
+            </h2>
+            <p className="text-sm text-[#64748B] mt-4 max-w-xl mx-auto">
+              Tokenly is designed as a secure proxy gateway. Your master keys are shielded centrally, never touching developer machines or local environment files.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* The Security Principle Callout */}
+            <div className="p-8 border border-[#E2E8F0] rounded bg-[#F8FAFC] flex flex-col justify-between md:col-span-2">
+              <div>
+                <span className="text-xs font-mono text-[#10B981] uppercase tracking-wider block mb-3">Core Cryptographic Principle</span>
+                <p className="text-sm font-medium italic text-[#0F172A] leading-relaxed">
+                  "A secret must exist somewhere to be used. The goal is not pretending secrets disappear — the goal is ensuring they are encrypted at rest, protected in transit, and exposed only for the shortest possible time during authorized execution."
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-[#E2E8F0] text-xs text-[#64748B]">
+                You cannot use a secret without, at some point, possessing the secret. Tokenly is designed around minimizing where and how long secrets exist.
+              </div>
+            </div>
+
+            {/* Credential Handling Grid */}
+            <div className="p-6 border border-[#E2E8F0] rounded bg-white">
+              <h3 className="font-bold text-sm text-[#0F172A] mb-3">Zero Keys Distributed</h3>
+              <p className="text-xs text-[#64748B] leading-relaxed mb-4">
+                Users never need to distribute API keys among teammates. Master users securely connect their AI provider credentials once in a centralized panel.
+              </p>
+              <ul className="text-xs text-[#64748B] space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#10B981] font-bold">•</span>
+                  <span>Plaintext API keys are never stored in databases.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#10B981] font-bold">•</span>
+                  <span>Tokenly encrypts provider credentials before storing them.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-6 border border-[#E2E8F0] rounded bg-white">
+              <h3 className="font-bold text-sm text-[#0F172A] mb-3">Ephemeral Decryption</h3>
+              <p className="text-xs text-[#64748B] leading-relaxed mb-4">
+                Credentials are decrypted only when required to make an authorized request. Decrypted credentials exist only temporarily in protected memory.
+              </p>
+              <ul className="text-xs text-[#64748B] space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#10B981] font-bold">•</span>
+                  <span>Exist only temporarily in protected memory during request execution.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#10B981] font-bold">•</span>
+                  <span>Requests are routed through a secure gateway with authentication, authorization, quotas, and audit logs.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION: DEVELOPER TRUST */}
+        <section id="trust" className="py-20 scroll-mt-6">
+          <div className="text-center mb-16">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#10B981]">Developer Trust</span>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] mt-2">
+              Isolated Agent Execution.
+            </h2>
+            <p className="text-sm text-[#64748B] mt-4 max-w-xl mx-auto">
+              How developers and local AI coding agents securely authenticate and interact with Tokenly's systems.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="p-6 border border-[#E2E8F0] rounded bg-white">
+              <h3 className="font-bold text-sm text-[#0F172A] mb-2">Tokenly CLI Identity</h3>
+              <p className="text-xs text-[#64748B] leading-relaxed">
+                The Tokenly CLI authenticates using a secure Tokenly identity token linked to the teammate's GitHub email. Developers never have direct access to, or visibility of, master API keys.
+              </p>
+            </div>
+
+            <div className="p-6 border border-[#E2E8F0] rounded bg-white">
+              <h3 className="font-bold text-sm text-[#0F172A] mb-2">Secure Gateway Communication</h3>
+              <p className="text-xs text-[#64748B] leading-relaxed">
+                AI coding agents and developer environments communicate exclusively through the Tokenly Gateway. The gateway verifies quotas, processes requests, and appends credentials on-the-fly.
+              </p>
             </div>
           </div>
         </section>
