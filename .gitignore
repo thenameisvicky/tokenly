@@ -24,3 +24,6 @@ out
 *.njsproj
 *.sln
 *.sw?
+
+# Confidential Strategic Documents
+strategy_tokenly.md
