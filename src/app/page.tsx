@@ -37,10 +37,6 @@ export default function Home() {
         
         {/* SECTION 1: HERO */}
         <section className="py-40 md:py-38 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-[#F1F5F9] text-xs font-semibold tracking-wide text-[#0F172A] mb-8 border border-[#E2E8F0]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
-            Secure AI Agent Infrastructure Platform
-          </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#0F172A] max-w-6xl leading-[1.1] mb-8">
             Teammate rate-limited? Air-drop $10 of AI tokens instantly
           </h1>
