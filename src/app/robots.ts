@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://thenameisvicky.github.io/tokenly/sitemap.xml',
+    sitemap: 'https://tokenly.in/sitemap.xml',
   };
 }

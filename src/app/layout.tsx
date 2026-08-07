@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Stop sharing raw master keys or risking account bans. Allocate secure, hard-capped compute budgets to your teammates profiles instantly.',
   keywords: ['AI tokens', 'air-drop', 'cost control', 'CLI rate limit', 'team token manager', 'developer tool'],
   authors: [{ name: 'Tokenly Team' }],
-  metadataBase: new URL('https://thenameisvicky.github.io/tokenly'),
+  metadataBase: new URL('https://tokenly.in'),
   icons: {
     icon: 'favicon.png?v=5',
     shortcut: 'favicon.png?v=5',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Tokenly',
     description: 'Stop sharing raw keys or risking account bans. Allocate secure, hard-capped compute budgets to your teammates profiles.',
-    url: 'https://thenameisvicky.github.io/tokenly',
+    url: 'https://tokenly.in',
     siteName: 'Tokenly',
     images: [
       {
